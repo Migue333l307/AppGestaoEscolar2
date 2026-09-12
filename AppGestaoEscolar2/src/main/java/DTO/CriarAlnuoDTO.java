@@ -1,12 +1,19 @@
 package DTO;
 
 import domain.EstadoAluno;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+//Entity transforma uma classe em entidade do nosso banco de dados;
+
+@Entity
+@Table(name = "aluno")
 public class CriarAlnuoDTO {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String numeroMatricula;
     private String nome;
     private String nomeSocial;
