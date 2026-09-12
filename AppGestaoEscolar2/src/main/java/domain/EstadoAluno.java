@@ -1,4 +1,7 @@
 package domain;
 
-public class EstadoAluno {
+public enum EstadoAluno {
+    ACTIVO,
+    INATIVO,
+    ARQUIVADO
 }
