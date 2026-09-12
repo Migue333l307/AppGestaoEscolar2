@@ -1,26 +1,59 @@
 package domain;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-
+@Entity
+@Table(name = "aluno")
 public class Aluno {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_aluno")
     private Long id;
+
+    @Column(name = "numero_matricula", nullable = false, unique = true, length =30)
     private String numeroMatricula;
+
+    @Column(name = "nome", nullable = false, length = 150)
     private String nome;
+
+    @Column(name = "nome_social", length = 150)
     private String nomeSocial;
+
+    @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
+
+    @Column(name = "genero", length = 30)
     private String genero;
+
+    @Column(name = "documento_identificacao", unique = true, length = 50)
     private String documentoIdentificacao;
+
+    @Column(name = "telefone", length = 30)
     private String telefone;
+
+    @Column(name = "email", length = 150)
     private String email;
+
+    @Column(name = "endereco", length = 255)
     private String endereco;
-    private LocalDate dataCadastro;
+
+    @Column(name = "data_cadastro")
+    private LocalDateTime dataCadastro;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", length = 20)
     private EstadoAluno estado;
 
-    public Aluno(Long id, String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento,
+    public Aluno() {
+    }
+
+    public Aluno(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento,
                  String genero, String documentoIdentificacao, String telefone, String email, String endereco,
-                 LocalDate dataCadastro, EstadoAluno estado) {
-        this.id = id;
+                 LocalDateTime dataCadastro, EstadoAluno estado) {
         this.numeroMatricula = numeroMatricula;
         this.nome = nome;
         this.nomeSocial = nomeSocial;
@@ -75,7 +108,7 @@ public class Aluno {
         return email;
     }
 
-    public LocalDate getDataCadastro() {
+    public LocalDateTime getDataCadastro() {
         return dataCadastro;
     }
 
@@ -103,7 +136,4 @@ public class Aluno {
         this.email = email;
     }
 
-    public void alterarEstado(EstadoAluno estado){
-        this.estado = estado;
-    }
 }
