@@ -53,7 +53,7 @@ public class Aluno {
     @OneToMany(mappedBy = "aluno")
     private List<AlunoResponsavel> alunoResponsaveis = new ArrayList<>();
 
-    public Aluno() {
+    public Aluno(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento, String genero, String documentoIdentificacao, String telefone, String email, String endereco) {
     }
 
     public Aluno(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento,

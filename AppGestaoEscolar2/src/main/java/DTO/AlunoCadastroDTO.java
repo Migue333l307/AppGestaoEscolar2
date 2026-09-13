@@ -1,30 +1,51 @@
 package DTO;
 
 import domain.EstadoAluno;
-import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 //Entity transforma uma classe em entidade do nosso banco de dados;
 
 
-public class CriarAlnuoDTO {
+public class AlunoCadastroDTO {
 
+    @NotBlank(message = "O número de matricula é obrigatório")
+    @Size(max = 30, message = "O número de matrícula deve ter no máximo 30 caracteres")
     private String numeroMatricula;
-    private String nome;
-    private String nomeSocial;
-    private LocalDate dataNascimento;
-    private String genero;
-    private String documentoIdentificacao;
-    private String telefone;
-    private String email;
-    private String endereco;
-    private LocalDate dataCadastro;
-    private EstadoAluno estado;
 
-    public CriarAlnuoDTO(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento,
-                         String genero, String documentoIdentificacao, String telefone, String email,
-                         String endereco, LocalDate dataCadastro, EstadoAluno estado) {
+    @NotBlank(message = "O nome é obrigatório")
+    @Size(max = 150, message = "O nome deve ter no máximo 150 caracteres")
+    private String nome;
+
+    @Size(max = 150, message = "O nome deve ter no máximo 150 caracteres" )
+    private String nomeSocial;
+
+    @NotNull(message = "A data de nascimento é obrigatória")
+    @Past(message = "A data de nascimento deve estar no passado")
+    private LocalDate dataNascimento;
+
+
+    private String genero;
+
+    @Size(max = 50, message = "O documento deve ter no máximo 50 caracteres")
+    private String documentoIdentificacao;
+
+
+    private String telefone;
+
+    @Email(message = "O email informado não é válido")
+    private String email;
+
+
+    private String endereco;
+
+    public AlunoCadastroDTO() {
+    }
+
+    public AlunoCadastroDTO(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento,
+                            String genero, String documentoIdentificacao, String telefone, String email,
+                            String endereco) {
         this.numeroMatricula = numeroMatricula;
         this.nome = nome;
         this.nomeSocial = nomeSocial;
@@ -34,8 +55,6 @@ public class CriarAlnuoDTO {
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
-        this.dataCadastro = dataCadastro;
-        this.estado = estado;
     }
 
     public String getNumeroMatricula() {
@@ -74,11 +93,4 @@ public class CriarAlnuoDTO {
         return endereco;
     }
 
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public EstadoAluno getEstado() {
-        return estado;
-    }
 }
