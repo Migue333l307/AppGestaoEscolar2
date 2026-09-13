@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "aluno")
@@ -26,7 +28,7 @@ public class Aluno {
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(name = "genero", length = 30)
+    @Column(name = "genero", length = 20)
     private String genero;
 
     @Column(name = "documento_identificacao", unique = true, length = 50)
@@ -47,6 +49,9 @@ public class Aluno {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", length = 20)
     private EstadoAluno estado;
+
+    @OneToMany(mappedBy = "aluno")
+    private List<AlunoResponsavel> alunoResponsaveis = new ArrayList<>();
 
     public Aluno() {
     }
