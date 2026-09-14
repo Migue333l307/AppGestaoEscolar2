@@ -1,6 +1,5 @@
-package DTO;
+package ao.MizTec.AppGestaoEscolar2.DTO;
 
-import domain.EstadoAluno;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;

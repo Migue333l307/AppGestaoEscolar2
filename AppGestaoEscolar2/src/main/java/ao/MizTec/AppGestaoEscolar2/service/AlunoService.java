@@ -1,10 +1,10 @@
-package service;
+package ao.MizTec.AppGestaoEscolar2.service;
 
 
-import DTO.AlunoCadastroDTO;
-import domain.Aluno;
+import ao.MizTec.AppGestaoEscolar2.DTO.AlunoCadastroDTO;
+import ao.MizTec.AppGestaoEscolar2.domain.Aluno;
 import org.springframework.stereotype.Service;
-import repository.AlunoRepository;
+import ao.MizTec.AppGestaoEscolar2.repository.AlunoRepository;
 
 
 @Service

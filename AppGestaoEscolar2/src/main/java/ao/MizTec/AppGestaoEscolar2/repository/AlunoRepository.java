@@ -1,7 +1,7 @@
-package repository;
+package ao.MizTec.AppGestaoEscolar2.repository;
 
-import domain.Aluno;
-import domain.EstadoAluno;
+import ao.MizTec.AppGestaoEscolar2.domain.Aluno;
+import ao.MizTec.AppGestaoEscolar2.domain.EstadoAluno;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
