@@ -1,4 +1,4 @@
-package ao.MizTec.AppGestaoEscolar2.domain;
+package ao.MizTec.AppGestaoEscolar2.alunoResponsavel.Entity;
 
 
 /*
@@ -35,6 +35,14 @@ public class AlunoResponsavelId implements Serializable {
         return idResponsavel;
     }
 
+    public void setIdAluno(Long idAluno) {
+        this.idAluno = idAluno;
+    }
+
+    public void setIdResponsavel(Long idResponsavel) {
+        this.idResponsavel = idResponsavel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,4 +55,6 @@ public class AlunoResponsavelId implements Serializable {
     public int hashCode() {
         return Objects.hash(idAluno, idResponsavel);
     }
+
+
 }

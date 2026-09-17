@@ -1,7 +1,7 @@
-package ao.MizTec.AppGestaoEscolar2.repository;
+package ao.MizTec.AppGestaoEscolar2.aluno.repository;
 
-import ao.MizTec.AppGestaoEscolar2.domain.Aluno;
-import ao.MizTec.AppGestaoEscolar2.domain.EstadoAluno;
+import ao.MizTec.AppGestaoEscolar2.aluno.Entity.Aluno;
+import ao.MizTec.AppGestaoEscolar2.aluno.Entity.EstadoAluno;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -18,5 +18,5 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
     List<Aluno> findByEstado(EstadoAluno estado);
 
-    List<Aluno> findByNumeroContainingIgnoreCase(String nome);
+    List<Aluno> findByNumeroMatriculaContainingIgnoreCase(String nome);
 }

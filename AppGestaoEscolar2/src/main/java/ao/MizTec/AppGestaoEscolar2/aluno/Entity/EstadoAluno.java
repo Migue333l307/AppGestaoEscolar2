@@ -1,4 +1,4 @@
-package ao.MizTec.AppGestaoEscolar2.domain;
+package ao.MizTec.AppGestaoEscolar2.aluno.Entity;
 
 public enum EstadoAluno {
     ACTIVO,

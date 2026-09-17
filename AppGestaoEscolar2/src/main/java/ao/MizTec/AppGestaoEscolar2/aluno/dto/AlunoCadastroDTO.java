@@ -1,5 +1,6 @@
-package ao.MizTec.AppGestaoEscolar2.DTO;
+package ao.MizTec.AppGestaoEscolar2.aluno.dto;
 
+import ao.MizTec.AppGestaoEscolar2.aluno.Entity.EstadoAluno;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 
 
 public class AlunoCadastroDTO {
+
 
     @NotBlank(message = "O número de matricula é obrigatório")
     @Size(max = 30, message = "O número de matrícula deve ter no máximo 30 caracteres")
@@ -39,12 +41,14 @@ public class AlunoCadastroDTO {
 
     private String endereco;
 
+    private EstadoAluno estado = EstadoAluno.ACTIVO;
+
     public AlunoCadastroDTO() {
     }
 
     public AlunoCadastroDTO(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento,
                             String genero, String documentoIdentificacao, String telefone, String email,
-                            String endereco) {
+                            String endereco, EstadoAluno estado) {
         this.numeroMatricula = numeroMatricula;
         this.nome = nome;
         this.nomeSocial = nomeSocial;
@@ -54,6 +58,8 @@ public class AlunoCadastroDTO {
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
+        this.estado = estado;
+
     }
 
     public String getNumeroMatricula() {
@@ -92,4 +98,7 @@ public class AlunoCadastroDTO {
         return endereco;
     }
 
+    public EstadoAluno getEstado() {
+        return estado;
+    }
 }

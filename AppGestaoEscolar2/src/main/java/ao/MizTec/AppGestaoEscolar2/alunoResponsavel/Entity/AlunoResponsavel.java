@@ -1,5 +1,7 @@
-package ao.MizTec.AppGestaoEscolar2.domain;
+package ao.MizTec.AppGestaoEscolar2.alunoResponsavel.Entity;
 
+import ao.MizTec.AppGestaoEscolar2.aluno.Entity.Aluno;
+import ao.MizTec.AppGestaoEscolar2.responsavel.Entity.Responsavel;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

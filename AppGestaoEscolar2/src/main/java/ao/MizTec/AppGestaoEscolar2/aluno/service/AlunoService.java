@@ -1,10 +1,12 @@
-package ao.MizTec.AppGestaoEscolar2.service;
+package ao.MizTec.AppGestaoEscolar2.aluno.service;
 
 
-import ao.MizTec.AppGestaoEscolar2.DTO.AlunoCadastroDTO;
-import ao.MizTec.AppGestaoEscolar2.domain.Aluno;
+import ao.MizTec.AppGestaoEscolar2.aluno.dto.AlunoCadastroDTO;
+import ao.MizTec.AppGestaoEscolar2.aluno.Entity.Aluno;
 import org.springframework.stereotype.Service;
-import ao.MizTec.AppGestaoEscolar2.repository.AlunoRepository;
+import ao.MizTec.AppGestaoEscolar2.aluno.repository.AlunoRepository;
+
+import java.time.LocalDateTime;
 
 
 @Service
@@ -30,7 +32,9 @@ public class AlunoService {
                 dto.getDocumentoIdentificacao(),
                 dto.getTelefone(),
                 dto.getEmail(),
-                dto.getEndereco()
+                dto.getEndereco(),
+                LocalDateTime.now(),
+                dto.getEstado()
         );
 
         repository.save(aluno);

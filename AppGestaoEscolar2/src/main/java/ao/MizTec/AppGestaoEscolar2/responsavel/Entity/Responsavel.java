@@ -1,5 +1,7 @@
-package ao.MizTec.AppGestaoEscolar2.domain;
+package ao.MizTec.AppGestaoEscolar2.responsavel.Entity;
 
+import ao.MizTec.AppGestaoEscolar2.alunoResponsavel.Entity.AlunoResponsavel;
+import ao.MizTec.AppGestaoEscolar2.aluno.Entity.EstadoAluno;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -34,16 +36,17 @@ public class Responsavel {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
-    private EstadoAluno estado;
+    private EstadoResponsavel estado = EstadoResponsavel.ACTIVO;
 
+    @OneToMany(mappedBy = "responsavel")
     private List<AlunoResponsavel> alunoResponsaveis = new ArrayList<>();
 
 
-    public Responsavel() {
+    protected Responsavel() {
     }
 
     public Responsavel( String nome, String documentoIdentificacao, String telefone, String email,
-                       String endereco, String profissao, EstadoAluno estado) {
+                       String endereco, String profissao, EstadoResponsavel estado) {
         this.nome = nome;
         this.documentoIdentificacao = documentoIdentificacao;
         this.telefone = telefone;
@@ -81,8 +84,12 @@ public class Responsavel {
         return profissao;
     }
 
-    public EstadoAluno getEstado() {
+    public EstadoResponsavel getEstado() {
         return estado;
+    }
+
+    public List<AlunoResponsavel> getAlunoResponsaveis() {
+        return alunoResponsaveis;
     }
 
     public void alterarNome(String nome) {

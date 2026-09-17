@@ -1,5 +1,6 @@
-package ao.MizTec.AppGestaoEscolar2.domain;
+package ao.MizTec.AppGestaoEscolar2.aluno.Entity;
 
+import ao.MizTec.AppGestaoEscolar2.alunoResponsavel.Entity.AlunoResponsavel;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -44,21 +45,21 @@ public class Aluno {
     private String endereco;
 
     @Column(name = "data_cadastro")
-    private LocalDateTime dataCadastro;
+    private LocalDateTime dataCadastro = LocalDateTime.now();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", length = 20)
-    private EstadoAluno estado;
+    private EstadoAluno estado = EstadoAluno.ACTIVO;
 
-    @OneToMany(mappedBy = "aluno")
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
     private List<AlunoResponsavel> alunoResponsaveis = new ArrayList<>();
 
-    public Aluno(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento, String genero, String documentoIdentificacao, String telefone, String email, String endereco) {
+    protected Aluno() {
     }
 
     public Aluno(String numeroMatricula, String nome, String nomeSocial, LocalDate dataNascimento,
-                 String genero, String documentoIdentificacao, String telefone, String email, String endereco,
-                 LocalDateTime dataCadastro, EstadoAluno estado) {
+                 String genero, String documentoIdentificacao, String telefone,String email,
+                 String endereco, LocalDateTime dataCadastro, EstadoAluno estado) {
         this.numeroMatricula = numeroMatricula;
         this.nome = nome;
         this.nomeSocial = nomeSocial;
@@ -119,6 +120,10 @@ public class Aluno {
 
     public EstadoAluno getEstado() {
         return estado;
+    }
+
+    public List<AlunoResponsavel> getAlunoResponsaveis() {
+        return alunoResponsaveis;
     }
 
     public void alterarNome(String nome){
