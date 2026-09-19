@@ -1,6 +1,7 @@
 package ao.MizTec.AppGestaoEscolar2.aluno.Entity;
 
 import ao.MizTec.AppGestaoEscolar2.alunoResponsavel.Entity.AlunoResponsavel;
+import ao.MizTec.AppGestaoEscolar2.matricula.Entity.Matricula;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -54,6 +55,9 @@ public class Aluno {
     @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
     private List<AlunoResponsavel> alunoResponsaveis = new ArrayList<>();
 
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+    private List<Matricula> matriculas = new ArrayList<>();
+
     protected Aluno() {
     }
 
@@ -69,7 +73,7 @@ public class Aluno {
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
-        this.dataCadastro = dataCadastro;
+        this.dataCadastro = LocalDateTime.now();
         this.estado = estado;
     }
 
